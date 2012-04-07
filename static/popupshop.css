@@ -1,0 +1,144 @@
+body {
+background: black;
+}
+
+p {
+font-family: 'Maven Pro', sans-serif;
+font-weight: 400;
+color:white;
+font-size:24px;
+line-height:30px;
+margin-bottom:20px;
+}
+
+.cursive {
+font-family: 'Condiment', cursive;
+color:white;
+}
+
+.gbold {
+font-family: 'Maven Pro', sans-serif;
+font-weight: 700;
+}
+
+.ssmall {
+font-size:21px;
+line-height:30px;
+}
+
+.smedium {
+font-size:24px;
+line-height:30px;
+}
+
+.gmedium {
+font-family: 'Maven Pro', sans-serif;
+font-weight: 500;
+}
+
+h1 {
+font-family: 'Maven Pro', sans-serif;
+font-weight: 500;
+color:white;
+margin-bottom:15px;
+font-size:36px;
+line-height:40px;
+}
+
+h3 {
+color:white;
+margin-bottom:15px;
+font-size:24px;
+line-height:30px;
+}
+
+.grey {
+color: #87868A;
+}
+
+.yellow {
+color: #FEEE00;
+}
+
+.pastel-green {
+color: #86BBB6;
+}
+
+.pastel-yellow {
+color: #ECD179;
+}
+
+.pastel-blue {
+color: #BFCEE3;
+}
+
+.pastel-purple {
+color: #7577AC;
+}
+
+.pastel-red {
+color: #C67086;
+}
+
+.central-nav { 
+text-align: center; 
+width: auto; 
+margin-left: -20px 
+} 
+
+.central-nav .nav-pills { 
+display:inline-block; 
+zoom:1; 
+*display: inline; 
+font-size:21px;
+}
+
+.navbar-inner {
+background: black;
+}
+
+#top-nav .nav-pills li.noimg {
+padding-top:21px;
+}
+
+#top-nav .nav-pills li.img {
+margin-left:10px;
+margin-right:10px;
+}
+
+#top-nav .nav {
+margin-bottom:0px;
+}
+
+.nav-pills {
+
+}
+
+.text-center {
+text-align:center;
+}
+
+.text-justify {
+text-align:justify;
+}
+
+.page_heading {
+margin-bottom:30px;
+}
+
+.person-row {
+margin-bottom:20px;
+}
+
+#programs img{
+margin-bottom:20px;
+}
+
+#partners img, #team img{
+margin-bottom:20px;
+}
+
+.page {
+padding-top: 65px;
+padding-bottom: 40px;
+}
