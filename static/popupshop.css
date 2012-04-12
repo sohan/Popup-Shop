@@ -68,6 +68,10 @@ color: #86BBB6;
 color: #ECD179;
 }
 
+.pastel-orange {
+color: #CC7655
+}
+
 .pastel-blue {
 color: #BFCEE3;
 }
@@ -141,4 +145,13 @@ margin-bottom:20px;
 .page {
 padding-top: 65px;
 padding-bottom: 40px;
+}
+
+.calendar-frame {
+    background: white;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+    padding:10px;
 }
