@@ -1,39 +1,49 @@
 import sys
 sys.stdout = sys.stderr
 
-import atexit
-import threading
+import os
 import cherrypy
 import smtplib
 import string
-
-cherrypy.config.update({'environment': 'embedded'})
-
-if cherrypy.__version__.startswith('3.0') and cherrypy.engine.state == 0:
-    cherrypy.engine.start(blocking=False)
-    atexit.register(cherrypy.engine.stop)
+from cherrypy import tools
+import re
 
 class Root(object):
+    def __init__(self):
+        self.server = smtplib.SMTP('localhost')
+
+    @cherrypy.expose
     def index(self):
-        return 'Hello World!'
-    index.exposed = True
+        return 'Sup, world?'
 
-def add_to_mailing_list(email):
-    SUBJECT = "join"
-    TO = "sj346@cornell.edu"
-    FROM = email
-    text = ""
-    BODY = string.join((
-            "From: %s" % FROM,
-            "To: %s" % TO,
-            "Subject: %s" % SUBJECT ,
-            "",
-            text
-            ), "\r\n")
-    server = smtplib.SMTP('localhost')
-    server.sendmail(FROM, [TO], BODY)
-    server.quit()
+    @cherrypy.expose
+    @tools.json_out(on = True)
+    def add_to_mailing_list(self, email = None):
+        if not email:
+            return {'error': 'no email address entered.'}
+        if not re.match(r"^[A-Za-z0-9\.\+_-]+@[A-Za-z0-9\._-]+\.[a-zA-Z]*$", email):
+            return {'error': 'invalid email address enetered.'}
+        try:
+            SUBJECT = "join"
+            TO = "popshop-request-l@cornell.edu"
+            FROM = email
+            text = ""
+            BODY = string.join((
+                    "From: %s" % FROM,
+                    "To: %s" % TO,
+                    "Subject: %s" % SUBJECT ,
+                    "",
+                    text
+                    ), "\r\n")
+            self.server.sendmail(FROM, [TO], BODY)
+            return {'success': True}
+        except Exception, e:
+            return {'success': False, 'error': str(e)}
 
-#application = cherrypy.Application(Root(), script_name=None, config=None)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+config_file = os.path.join(current_dir, 'server_config.ini')
+cherrypy.config.update(config_file)
+cherrypy.tree.mount(Root(), '/api')
+
 if __name__ == '__main__':
-    add_to_mailing_list('sj346@cornell.edu')
+    cherrypy.engine.start()
