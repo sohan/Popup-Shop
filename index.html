@@ -85,8 +85,16 @@ It’s about filling in the gaps between people, projects and disciplines, it’
 04.07.2012 to 05.07.2012
               </p>
               <p class="gmedium ssmall">
-              <a href="#calendar">SEE A CALENDAR OF OUR EVENTS</a>
+              <a class="btn btn-primary" href="#calendar">SEE A CALENDAR OF OUR EVENTS</a>
               </p>
+              <button class="btn btn-primary" data-toggle="collapse" data-target="#join_mailing_list" href="#">CLICK HERE TO JOIN OUR MAILING LIST</button>
+              <div id="join_mailing_list" class="collapse in">
+                <form id="mailing_list_form" class="form-inline" style="margin-top:5px">
+                  <input type="text" class="span3" placeholder="Your email address"/>
+                  <button type="submit" class="btn">Submit</button>
+                </form>
+                <p id="form_loading" style="display: none">Loading...</p>
+              </div>
               <p class="gbold ssmall">
 WE ARE ALWAYS <span class="yellow">OPEN.</span>
               </p>
@@ -288,5 +296,34 @@ WE ARE ALWAYS <span class="yellow">OPEN.</span>
     </script>
     <script src="static/jquery.min.js"></script>
     <script src="static/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(".collapse").collapse();
+
+      $(document).ready(function() {
+        $('#mailing_list_form').submit(function () {
+          $('#form_loading').css('display', 'block');
+          var status = $('<p></p>');
+          try {
+            $.getJSON('/api/add_to_mailing_list', function(data) {
+              $('#form_loading').css('display', 'none');
+              if (data) {
+                if ('success' in data) {
+                  status.text('Success!');
+                } else if ('error' in data) {
+                  status.text('Error :( ' + data['error']);
+                } else {
+                  status.text('unknown error occurred');
+                }
+              }
+            });
+          } catch (e) {
+            status.text('unknown error occurred ' + e);
+          }
+          console.log(status);
+          $('#join_mailing_list').append(status);
+          return false;
+        });
+      });
+    </script>
   </body>
 </html>
