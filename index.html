@@ -90,7 +90,7 @@ It’s about filling in the gaps between people, projects and disciplines, it’
               <button class="btn btn-primary" data-toggle="collapse" data-target="#join_mailing_list" href="#">CLICK HERE TO JOIN OUR MAILING LIST</button>
               <div id="join_mailing_list" class="collapse in">
                 <form id="mailing_list_form" class="form-inline" style="margin-top:5px">
-                  <input type="text" class="span3" placeholder="Your email address"/>
+                  <input type="text" class="span3" id="email" placeholder="Your email address"/>
                   <button type="submit" class="btn">Submit</button>
                 </form>
                 <p id="form_loading" style="display: none">Loading...</p>
@@ -195,17 +195,23 @@ WE ARE ALWAYS <span class="yellow">OPEN.</span>
               </a>
             </div>
             <div class="span3">
+              <a href="http://www.elabstartup.com/index.php">
+                <img src="static/img/elab.png">
+                <p class="pastel-blue"> eLab </p>
+              </a>
+            </div>
+            <div class="span3">
               <a href="http://www.cis.cornell.edu/">
                 <img src="static/img/cis.png">
                 <p class="pastel-blue"> CIS </p>
               </a>
             </div>
+          </div>
+          <div class="row-fluid person-row">
             <div class="span3">
               <img src="static/img/partner-blank.png">
               <p class="pastel-blue"> CO.WORKS </p>
             </div>
-          </div>
-          <div class="row-fluid person-row">
             <div class="span3 text-center">
               <img src="static/img/partner-blank.png">
               <p class="pastel-blue"> MoPEDx </p>
@@ -213,7 +219,7 @@ WE ARE ALWAYS <span class="yellow">OPEN.</span>
             <div class="span3 text-center">
               <img src="static/img/you-question.png">
             </div>
-            <div class="span6">
+            <div class="span3">
               <h2> <a href="mailto:hello@popright.in">CONTACT US</a> </h2>
               <h2> <a href="mailto:hello@popright.in">LET'S COLLABORATE! </a></h2>
             </div>
@@ -303,8 +309,9 @@ WE ARE ALWAYS <span class="yellow">OPEN.</span>
         $('#mailing_list_form').submit(function () {
           $('#form_loading').css('display', 'block');
           var status = $('<p></p>');
+          var email = $('input#email').val();
           try {
-            $.getJSON('/api/add_to_mailing_list', function(data) {
+          $.getJSON('/api/add_to_mailing_list', {email: email}, function(data) {
               $('#form_loading').css('display', 'none');
               if (data) {
                 if ('success' in data) {
