@@ -68,10 +68,10 @@ It’s about filling in the gaps between people, projects and disciplines, it’
                 <!-- TODO: add links here -->
                 <li> <p style="margin-top:14px"><span class="cursive ssmall"> Elsewhere </span></p></li>
                 <li> <a href="https://www.facebook.com/poprightin"><img src="static/img/fb-icon.png" height="30" width="30"></a> </li>
-                <li> <a href="#"><img src="static/img/twitter-icon.png" height="30" width="30"> </a></li>
-                <li> <a href="#"><img src="static/img/tumblr-icon.png" height="30" width="30"> </a></li>
-                <li> <a href="#"><img src="static/img/vimeo-icon.png" height="30" width="30"> </a></li>
-                <li> <a href="#"><img src="static/img/final-icon.png" height="30" width="30"> </a></li>
+                <li> <a href="http://twitter.com/poprightin"><img src="static/img/twitter-icon.png" height="30" width="30"> </a></li>
+                <li> <a href="http://poprightin.tumblr.com/"><img src="static/img/tumblr-icon.png" height="30" width="30"> </a></li>
+                <li> <a href="http://youtube.com/poprightin"><img src="static/img/vimeo-icon.png" height="30" width="30"> </a></li>
+                <li> <a href="http://flickr.com/photos/popright.in"><img src="static/img/final-icon.png" height="30" width="30"> </a></li>
               </ul>
   
             </div>
@@ -86,12 +86,12 @@ It’s about filling in the gaps between people, projects and disciplines, it’
               <a class="btn btn-primary" href="#calendar">SEE A CALENDAR OF OUR EVENTS</a>
               </p>
               <p>
-              <button class="btn btn-primary" onclick="window.open('static/stream.html', 'popshop_stream', 'status=0,toolbar=0,height=500,width=660,resizeable=0')">SEE WHAT'S POPPING RIGHT NOW!</button>
+              <button class="btn btn-primary" onclick="window.open('static/stream.html', 'popshop_stream', 'status=0,toolbar=0,height=500,width=660,resizeable=0')">SEE WHAT'S POPPING RIGHT NOW</button>
               </p>
               <!--button class="btn btn-primary" data-toggle="collapse" data-target="#join_mailing_list" href="#">CLICK HERE TO JOIN OUR MAILING LIST</button>
               <div id="join_mailing_list" class="collapse in">
                 <form id="mailing_list_form" class="form-inline" style="margin-top:5px">
-                  <input type="text" class="span3" id="email" placeholder="Your email address"/>
+                  <input type="text" class="span3" id='email' placeholder="Your email address"/>
                   <button type="submit" class="btn">Submit</button>
                 </form>
                 <p id="form_loading" style="display: none">Loading...</p>
@@ -310,9 +310,9 @@ WE ARE ALWAYS <span class="yellow">OPEN.</span>
         $('#mailing_list_form').submit(function () {
           $('#form_loading').css('display', 'block');
           var status = $('<p></p>');
-          var email = $('input#email').val();
+          var email = $('input#email').val()
           try {
-          $.getJSON('/api/add_to_mailing_list', {email: email}, function(data) {
+            $.getJSON('/api/add_to_mailing_list?email=' + email, function(data) {
               $('#form_loading').css('display', 'none');
               if (data) {
                 if ('success' in data) {
