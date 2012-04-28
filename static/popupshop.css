@@ -3,8 +3,8 @@ background: black;
 }
 
 p {
-font-family: 'Maven Pro', sans-serif;
-font-weight: 400;
+font-family: 'Nunito', sans-serif;
+font-weight: 300;
 color:white;
 font-size:24px;
 line-height:30px;
@@ -12,12 +12,12 @@ margin-bottom:20px;
 }
 
 .cursive {
-font-family: 'Condiment', cursive;
+font-family: 'Pacifico', cursive;
 color:white;
 }
 
 .gbold {
-font-family: 'Maven Pro', sans-serif;
+font-family: 'Fredoka One', sans-serif;
 font-weight: 700;
 }
 
@@ -32,13 +32,13 @@ line-height:30px;
 }
 
 .gmedium {
-font-family: 'Maven Pro', sans-serif;
-font-weight: 500;
+font-family: 'Nunito', sans-serif;
+font-weight: 400;
 }
 
 h1 {
-font-family: 'Maven Pro', sans-serif;
-font-weight: 500;
+font-family: 'Fredoka One', sans-serif;
+font-weight: 700;
 color:white;
 margin-bottom:15px;
 font-size:36px;
